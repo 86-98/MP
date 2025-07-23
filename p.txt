@@ -1,0 +1,213 @@
+MASM Code: Subtraction of 8-bit Numbers
+.MODEL SMALL
+.STACK 100H
+.DATA
+    MSG1 DB "Enter first number (0-9): $"
+    MSG2 DB 13, 10, "Enter second number (0-9): $"
+    MSG3 DB 13, 10, "Result = $"
+    NUM1 DB ?
+    NUM2 DB ?
+    RESULT DB ?
+
+.CODE
+MAIN PROC
+    MOV AX, @DATA
+    MOV DS, AX
+
+    ; --- Prompt for first number ---
+    LEA DX, MSG1
+    MOV AH, 09H
+    INT 21H
+
+    ; --- Read first number ---
+    MOV AH, 01H
+    INT 21H         ; AL = ASCII of digit
+    SUB AL, 30H     ; Convert ASCII to integer
+    MOV NUM1, AL
+
+    ; --- Prompt for second number ---
+    LEA DX, MSG2
+    MOV AH, 09H
+    INT 21H
+
+    ; --- Read second number ---
+    MOV AH, 01H
+    INT 21H
+    SUB AL, 30H
+    MOV NUM2, AL
+
+    ; --- Subtract NUM2 from NUM1 ---
+    MOV AL, NUM1
+    SUB AL, NUM2
+    MOV RESULT, AL
+
+    ; --- Display Result ---
+    LEA DX, MSG3
+    MOV AH, 09H
+    INT 21H
+
+    ; Convert result to ASCII and print
+    MOV AL, RESULT
+    ADD AL, 30H     ; Convert to ASCII
+    MOV DL, AL
+    MOV AH, 02H
+    INT 21H
+
+    ; --- Exit program ---
+    MOV AH, 4CH
+    INT 21H
+
+MAIN ENDP
+END MAIN
+
+MASM Code: 8-bit Multiplication with User Input
+
+.MODEL SMALL
+.STACK 100H
+.DATA
+    MSG1 DB "Enter first number (0-9): $"
+    MSG2 DB 13, 10, "Enter second number (0-9): $"
+    MSG3 DB 13, 10, "Result = $"
+    NUM1 DB ?
+    NUM2 DB ?
+    RESULT DW ?           ; 16-bit result since 8-bit * 8-bit = up to 16-bit
+    DIGIT1 DB ?
+    DIGIT2 DB ?
+
+.CODE
+MAIN PROC
+    MOV AX, @DATA
+    MOV DS, AX
+
+    ; --- Prompt and input first number ---
+    LEA DX, MSG1
+    MOV AH, 09H
+    INT 21H
+
+    MOV AH, 01H
+    INT 21H
+    SUB AL, 30H            ; Convert ASCII to binary
+    MOV NUM1, AL
+
+    ; --- Prompt and input second number ---
+    LEA DX, MSG2
+    MOV AH, 09H
+    INT 21H
+
+    MOV AH, 01H
+    INT 21H
+    SUB AL, 30H
+    MOV NUM2, AL
+
+    ; --- Multiply NUM1 * NUM2 ---
+    MOV AL, NUM1
+    MUL NUM2               ; AL * NUM2 → result in AX
+    MOV RESULT, AX         ; Store result
+
+    ; --- Display message ---
+    LEA DX, MSG3
+    MOV AH, 09H
+    INT 21H
+
+    ; --- Convert result in AX to decimal string ---
+    ; AX has result (max 81 for 9*9) so 2 digits are enough
+
+    MOV AX, RESULT
+    MOV CX, 0              ; Digit counter
+
+NEXT_DIGIT:
+    XOR DX, DX             ; Clear remainder
+    MOV BX, 10
+    DIV BX                 ; AX ÷ 10 → Quotient in AX, remainder in DX
+    ADD DL, 30H            ; Convert remainder to ASCII
+    PUSH DX                ; Store digit
+    INC CX                 ; Count digit
+    CMP AX, 0
+    JNZ NEXT_DIGIT
+
+PRINT_DIGITS:
+    POP DX
+    MOV AH, 02H
+    INT 21H
+    LOOP PRINT_DIGITS
+
+    ; --- Exit program ---
+    MOV AH, 4CH
+    INT 21H
+
+MAIN ENDP
+END MAIN
+✅ MASM Code: Division of 8-bit Numbers (User Input)
+.MODEL SMALL
+.STACK 100H
+.DATA
+    MSG1 DB "Enter dividend (0-9): $"
+    MSG2 DB 13, 10, "Enter divisor (1-9): $"
+    MSG3 DB 13, 10, "Quotient = $"
+    MSG4 DB 13, 10, "Remainder = $"
+    DIVIDEND DB ?
+    DIVISOR DB ?
+    QUOTIENT DB ?
+    REMAINDER DB ?
+
+.CODE
+MAIN PROC
+    MOV AX, @DATA
+    MOV DS, AX
+
+    ; --- Prompt and input dividend ---
+    LEA DX, MSG1
+    MOV AH, 09H
+    INT 21H
+
+    MOV AH, 01H
+    INT 21H
+    SUB AL, 30H              ; Convert ASCII to binary
+    MOV DIVIDEND, AL
+
+    ; --- Prompt and input divisor ---
+    LEA DX, MSG2
+    MOV AH, 09H
+    INT 21H
+
+    MOV AH, 01H
+    INT 21H
+    SUB AL, 30H              ; Convert ASCII to binary
+    MOV DIVISOR, AL
+
+    ; --- Perform division ---
+    MOV AL, DIVIDEND
+    XOR AH, AH               ; Clear AH before DIV (for 8-bit division: AX ÷ reg/mem)
+    DIV DIVISOR              ; AL / divisor → Quotient in AL, Remainder in AH
+    MOV QUOTIENT, AL
+    MOV REMAINDER, AH
+
+    ; --- Display Quotient ---
+    LEA DX, MSG3
+    MOV AH, 09H
+    INT 21H
+
+    MOV AL, QUOTIENT
+    ADD AL, 30H              ; Convert to ASCII
+    MOV DL, AL
+    MOV AH, 02H
+    INT 21H
+
+    ; --- Display Remainder ---
+    LEA DX, MSG4
+    MOV AH, 09H
+    INT 21H
+
+    MOV AL, REMAINDER
+    ADD AL, 30H              ; Convert to ASCII
+    MOV DL, AL
+    MOV AH, 02H
+    INT 21H
+
+    ; --- Exit program ---
+    MOV AH, 4CH
+    INT 21H
+
+MAIN ENDP
+END MAIN
+
