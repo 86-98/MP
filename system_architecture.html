@@ -1,0 +1,809 @@
+<!DOCTYPE html><html><head>
+      <title>system_architecture</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///c:\Users\cscod\.antigravity\extensions\shd101wyy.markdown-preview-enhanced-0.8.22-universal\crossnote\dependencies\katex\katex.min.css">
+      
+      
+      <script type="text/javascript" src="file:///c:\Users\cscod\.antigravity\extensions\shd101wyy.markdown-preview-enhanced-0.8.22-universal\crossnote\dependencies\mermaid\mermaid.min.js" charset="UTF-8"></script>
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("data:application/x-font-woff;charset=utf-8;base64,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") format("woff")}.callout{--callout-color:68,138,255;position:relative;overflow:hidden;border-radius:4px;margin:1rem 0;padding:.75rem 1rem;background:rgba(var(--callout-color),.1)}.callout>.callout-title{margin:0 -1.2rem;padding:0 1.2rem 0 3.3rem;font-weight:700;color:rgb(var(--callout-color))}.callout .callout-title::before{position:absolute;left:1.2rem;font-size:1.2rem;font-family:Material Icons;font-style:normal;font-variant:normal;font-weight:400;text-transform:none;white-space:nowrap;word-wrap:normal;direction:ltr;color:rgba(var(--callout-color),.8);content:var(--callout-icon, "i")}.callout>p{margin-block-start:1rem;margin-block-end:1rem;padding-left:.4rem}.callout details.callout-title,.callout summary.callout-title{cursor:pointer;list-style:none}.callout summary.callout-title::-webkit-details-marker{display:none}details.callout>summary.callout-title::after{display:inline-block;width:.45em;height:.45em;margin-left:1em;border-right:2px solid rgb(var(--callout-color));border-bottom:2px solid rgb(var(--callout-color));transform:translateY(-.05em) rotate(-45deg);transition:transform 160ms ease,opacity 160ms ease;opacity:.9;content:""}details.callout[open]>summary.callout-title::after{transform:translateY(-.05em) rotate(45deg);opacity:1}.callout[data-callout=abstract],.callout[data-callout=summary],.callout[data-callout=tldr]{--callout-color:0,191,188;--callout-icon:"\E8D2"}.callout[data-callout=note]{--callout-color:8,109,221;--callout-icon:"\E3C9"}.callout[data-callout=info]{--callout-color:8,109,221;--callout-icon:"\E88E"}.callout[data-callout=todo]{--callout-color:8,109,221;--callout-icon:"\E88E"}.callout[data-callout=hint],.callout[data-callout=important],.callout[data-callout=tip]{--callout-color:0,191,188;--callout-icon:"\E80E"}.callout[data-callout=check],.callout[data-callout=done],.callout[data-callout=success]{--callout-color:8,185,78;--callout-icon:"\E876"}.callout[data-callout=faq],.callout[data-callout=help],.callout[data-callout=question]{--callout-color:236,117,0;--callout-icon:"\E887"}.callout[data-callout=attention],.callout[data-callout=caution],.callout[data-callout=warning]{--callout-color:236,117,0;--callout-icon:"\E002"}.callout[data-callout=fail],.callout[data-callout=failure],.callout[data-callout=missing]{--callout-color:233,49,71;--callout-icon:"\E14C"}.callout[data-callout=danger],.callout[data-callout=error]{--callout-color:233,49,71;--callout-icon:"\E3E7"}.callout[data-callout=bug]{--callout-color:233,49,71;--callout-icon:"\E868"}.callout[data-callout=example]{--callout-color:120,82,238;--callout-icon:"\E242"}.callout[data-callout=cite],.callout[data-callout=quote]{--callout-color:158,158,158;--callout-icon:"\E244"}.callout .callout{margin:.75rem 0}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script>
+    </head>
+    <body for="html-export">
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="aim-profile-search-engine--complete-system-architecture">AIM Profile Search Engine — Complete System Architecture </h1>
+<blockquote>
+<p><strong>Project</strong>: <code>mini_project/</code> — An AI-powered recruiter ↔ candidate matching platform<br>
+<strong>Subsystems</strong>: <code>aim_profile_app</code> (React + Node.js) · <code>skill_matcher</code> (FastAPI + PostgreSQL/pgvector)</p>
+</blockquote>
+<hr>
+<h2 id="1-high-level-system-overview">1. High-Level System Overview </h2>
+<p>The system is composed of <strong>two independent subsystems</strong> that together form a full-stack AI-driven skill matching platform:</p>
+<table>
+<thead>
+<tr>
+<th>Subsystem</th>
+<th>Stack</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>aim_profile_app</code></strong></td>
+<td>React (Vite) + Node.js API + Groq LLM</td>
+<td>The primary application. Recruiters search in natural language, AI extracts skills, candidates get verification questions via collaborative filtering.</td>
+</tr>
+<tr>
+<td><strong><code>skill_matcher</code></strong></td>
+<td>FastAPI + PostgreSQL + pgvector + sentence-transformers</td>
+<td>A standalone microservice for hierarchical skill taxonomy with vector-based semantic search.</td>
+</tr>
+</tbody>
+</table>
+<div class="mermaid">graph TB
+    subgraph "aim_profile_app (Primary System)"
+        UI["React Frontend&lt;br/&gt;(Vite SPA)"]
+        API["Node.js API Server&lt;br/&gt;(Express + Groq SDK)"]
+        CF["CF Engine&lt;br/&gt;(Item-based kNN)"]
+        RE["Relevance Engine&lt;br/&gt;(Graph + CF Hybrid)"]
+        SG["Skill Graph&lt;br/&gt;(Curated Knowledge)"]
+        SD["skill_similarity.json&lt;br/&gt;(227 Skills × 87K Users)"]
+        LS["localStorage&lt;br/&gt;(State Persistence)"]
+    end
+
+    subgraph "skill_matcher (Microservice)"
+        FA["FastAPI Server"]
+        PG["PostgreSQL + pgvector"]
+        ST["sentence-transformers&lt;br/&gt;(all-MiniLM-L6-v2)"]
+    end
+
+    subgraph "External Services"
+        GROQ["Groq Cloud API&lt;br/&gt;(qwen3-32b)"]
+        SO["Stack Overflow&lt;br/&gt;Survey 2023 CSV"]
+    end
+
+    UI &lt;--&gt;|"HTTP POST"| API
+    UI --- CF
+    UI --- RE
+    CF --- SD
+    RE --- SG
+    RE --- SD
+    API --&gt;|"LLM Inference"| GROQ
+    SO -.-&gt;|"Precomputed Offline"| SD
+    FA --&gt; PG
+    FA --&gt; ST
+
+    style UI fill:#6366f1,color:#fff
+    style API fill:#8b5cf6,color:#fff
+    style GROQ fill:#f59e0b,color:#000
+    style PG fill:#10b981,color:#fff
+</div><hr>
+<h2 id="2-complete-data-flow-diagrams">2. Complete Data Flow Diagrams </h2>
+<h3 id="21--master-data-flow-recruiter-search-lifecycle">2.1 — Master Data Flow: Recruiter Search Lifecycle </h3>
+<p>This is the <strong>primary pipeline</strong> — what happens when a recruiter types a query:</p>
+<div class="mermaid">sequenceDiagram
+    participant R as Recruiter (UI)
+    participant SS as SkillSearch Component
+    participant SE as skillExtractor.js
+    participant API as api-server.js (Node)
+    participant GROQ as Groq Cloud (qwen3-32b)
+    participant CTX as AppContext (useReducer)
+    participant RE as relevanceEngine.js
+    participant CF as cfEngine.js
+    participant SG as skillGraph.js
+    participant SD as skill_similarity.json
+    participant U as Candidate (UserDashboard)
+
+    R-&gt;&gt;SS: Types "build a real-time data pipeline"
+    SS-&gt;&gt;SE: extractSkills(query)
+    
+    Note over SE: Decision Gate:&lt;br/&gt;1-word exact match? → skip API&lt;br/&gt;1-2 words? → fuzzy match&lt;br/&gt;3+ words? → NLP mode
+
+    SE-&gt;&gt;API: POST /api/extract-skills {query}
+    
+    Note over API: Fast Path Check:&lt;br/&gt;exact match against 227 skills?&lt;br/&gt;fuzzy substring match?
+
+    API-&gt;&gt;GROQ: chat.completions.create({model: qwen3-32b, messages: [system_prompt, query]})
+    GROQ--&gt;&gt;API: JSON: [{name: "Apache Kafka", relevance: 0.92, reason: "real-time streaming"}, ...]
+    
+    Note over API: Validation Gate:&lt;br/&gt;Strip &lt;think&gt; tags&lt;br/&gt;Parse JSON&lt;br/&gt;Filter: only skills ∈ ALL_SKILLS&lt;br/&gt;Clamp relevance to [0, 1]
+
+    API--&gt;&gt;SE: {type: "nlp", skills: [...]}
+    SE--&gt;&gt;SS: Extracted skills array
+
+    Note over SS: Phase 2: User selects/deselects&lt;br/&gt;skills (auto-select if relevance &gt; 0.4)
+
+    R-&gt;&gt;SS: Clicks "Find Candidates"
+    SS-&gt;&gt;CTX: dispatch(UNIFIED_SEARCH, {skills, originalQuery, extractionType})
+    
+    Note over CTX: For EACH extracted skill:
+
+    CTX-&gt;&gt;CTX: A. Direct Match — filter users where skill ∈ user.skills
+    CTX-&gt;&gt;RE: B. findQuestionsForRecruiterSearch(users, skillName)
+    
+    RE-&gt;&gt;SG: Check SKILL_GRAPH for curated relationships
+    RE-&gt;&gt;SD: Fallback: getCFRelevance() from similarity matrix
+    
+    Note over RE: Scoring Algorithm:&lt;br/&gt;Direct link in graph → 10&lt;br/&gt;Shared neighbor → 5&lt;br/&gt;Same domain → 3&lt;br/&gt;CF sim &gt; 0.5 → 10&lt;br/&gt;CF sim &gt; 0.3 → 5&lt;br/&gt;CF sim &gt; 0.15 → 3&lt;br/&gt;&lt;br/&gt;If score ≥ 3 → generate question
+
+    RE--&gt;&gt;CTX: [{userId, targetSkill, relevance, reason, originalQuery}]
+    
+    Note over CTX: Dedup matches by user ID&lt;br/&gt;Merge pending_questions&lt;br/&gt;Count verifications
+
+    CTX--&gt;&gt;SS: Updated state → Phase 3 (Results)
+    SS--&gt;&gt;R: Shows: Direct Matches + Verification Stats
+
+    Note over U: Meanwhile, on Candidate side...
+
+    U-&gt;&gt;CTX: Sees pending_questions in inbox
+    U-&gt;&gt;CTX: dispatch(ANSWER_QUESTION, {userId, targetSkill, accepted: true})
+    
+    Note over CTX: If accepted → skill added to user.skills&lt;br/&gt;If denied → skill added to user.denied_skills&lt;br/&gt;Question removed from pending
+</div><hr>
+<h3 id="22--nlp-skill-extraction-pipeline-3-tier-cascade">2.2 — NLP Skill Extraction Pipeline (3-Tier Cascade) </h3>
+<p>The extraction system uses a <strong>cascading strategy</strong> that avoids unnecessary API calls:</p>
+<div class="mermaid">flowchart TD
+    INPUT["User Query&lt;br/&gt;(e.g. 'optimize website performance')"] --&gt; TRIM["Trim &amp; Validate"]
+    
+    TRIM --&gt; CLIENT_OR_API{"API Server&lt;br/&gt;Available?"}
+    
+    CLIENT_OR_API --&gt;|Yes| API_PATH["api-server.js"]
+    CLIENT_OR_API --&gt;|No| FALLBACK["Client-Side Fallback&lt;br/&gt;(skillExtractor.js)"]
+
+    API_PATH --&gt; EXACT{"Exact Match?&lt;br/&gt;query.toLowerCase() ===&lt;br/&gt;skill.toLowerCase()"}
+    EXACT --&gt;|Yes| EXACT_OUT["Return: type='exact'&lt;br/&gt;relevance=1.0&lt;br/&gt;⚡ 0ms latency"]
+    
+    EXACT --&gt;|No| FUZZY{"Short Query?&lt;br/&gt;(≤ 2 words)"}
+    FUZZY --&gt;|Yes| FUZZY_MATCH{"Substring Match?&lt;br/&gt;skill.includes(query)"}
+    FUZZY_MATCH --&gt;|Yes| FUZZY_OUT["Return: type='fuzzy'&lt;br/&gt;Up to 5 matches&lt;br/&gt;⚡ ~1ms latency"]
+    FUZZY_MATCH --&gt;|No| NLP_PATH
+    
+    FUZZY --&gt;|No| NLP_PATH["Groq API Call&lt;br/&gt;(qwen3-32b)"]
+    NLP_PATH --&gt; SYSTEM_PROMPT["System Prompt includes&lt;br/&gt;all 227 skill names"]
+    SYSTEM_PROMPT --&gt; LLM["LLM Inference&lt;br/&gt;temp=0.3, top_p=0.9"]
+    LLM --&gt; STRIP["Strip &lt;think&gt; tags"]
+    STRIP --&gt; PARSE["Parse JSON response"]
+    PARSE --&gt; VALIDATE["Validate: skill ∈ ALL_SKILLS&lt;br/&gt;Clamp relevance ∈ [0,1]"]
+    VALIDATE --&gt; NLP_OUT["Return: type='nlp'&lt;br/&gt;3-8 skills with reasons&lt;br/&gt;🧠 ~1-3s latency"]
+    
+    NLP_PATH --&gt;|Error| KEYWORD["Keyword Fallback&lt;br/&gt;word-level matching"]
+    KEYWORD --&gt; KEYWORD_OUT["Return: type='fallback'&lt;br/&gt;Up to 5 matches"]
+    
+    FALLBACK --&gt; FB_EXACT{"Exact Match?"}
+    FB_EXACT --&gt;|Yes| FB_EXACT_OUT["Return: type='exact'"]
+    FB_EXACT --&gt;|No| FB_WORD["Word-Level Scoring&lt;br/&gt;full_match: +0.8&lt;br/&gt;word_match: +0.3 each"]
+    FB_WORD --&gt; FB_OUT["Return: type='fallback'&lt;br/&gt;Top 8 by score"]
+
+    style EXACT_OUT fill:#10b981,color:#fff
+    style FUZZY_OUT fill:#3b82f6,color:#fff
+    style NLP_OUT fill:#8b5cf6,color:#fff
+    style KEYWORD_OUT fill:#f59e0b,color:#000
+    style FB_OUT fill:#f59e0b,color:#000
+</div><hr>
+<h3 id="23--collaborative-filtering-engine-item-based-knn">2.3 — Collaborative Filtering Engine (Item-Based kNN) </h3>
+<p>The CF engine powers <strong>two features</strong>: candidate verification AND skill autosuggest for users.</p>
+<div class="mermaid">flowchart TD
+    subgraph "Offline: Pre-computation (precompute_similarity.py)"
+        CSV["Stack Overflow Survey 2023&lt;br/&gt;87,000+ developers&lt;br/&gt;survey_results_public.csv (152MB)"]
+        PARSE["Parse HaveWorkedWith columns&lt;br/&gt;(6 columns: Language, DB,&lt;br/&gt;Platform, WebFrame, Misc, Tools)"]
+        FILTER["Filter: min 100 users per skill&lt;br/&gt;→ 227 skills survive"]
+        INVERTED["Build Inverted Index:&lt;br/&gt;skill → Set of user IDs"]
+        COSINE["Pairwise Cosine Similarity&lt;br/&gt;Binary vectors:&lt;br/&gt;sim(A,B) = |A∩B| / √(|A|·|B|)"]
+        TOP_N["Keep Top 15 per skill"]
+        JSON["Output: skill_similarity.json&lt;br/&gt;{ skills: [...], similarity: {...} }"]
+        
+        CSV --&gt; PARSE --&gt; FILTER --&gt; INVERTED --&gt; COSINE --&gt; TOP_N --&gt; JSON
+    end
+
+    subgraph "Runtime: cfEngine.js — getSuggestions()"
+        HAS["User's confirmed skills (+1)"]
+        DENIED["User's denied skills (-1)"]
+        LOOP["For each UNKNOWN skill&lt;br/&gt;(not in has ∪ denied):"]
+        LOOKUP["Lookup similarity[candidate][*]"]
+        SCORE["score = Σ(sim × rating) / Σ|sim|&lt;br/&gt;where rating = +1 (has) or -1 (denied)"]
+        THRESHOLD["Filter: score &gt; 0.1"]
+        CONFIDENCE["Confidence:&lt;br/&gt;score &gt; 0.6 → HIGH&lt;br/&gt;score &gt; 0.35 → MEDIUM&lt;br/&gt;else → LOW"]
+        OUTPUT["Return top 8-12 predictions&lt;br/&gt;{skill, score, confidence, reasons[]}"]
+        
+        HAS --&gt; LOOP
+        DENIED --&gt; LOOP
+        LOOP --&gt; LOOKUP --&gt; SCORE --&gt; THRESHOLD --&gt; CONFIDENCE --&gt; OUTPUT
+    end
+
+    JSON -.-&gt;|"Loaded at startup"| LOOKUP
+
+    style CSV fill:#ef4444,color:#fff
+    style JSON fill:#10b981,color:#fff
+    style OUTPUT fill:#6366f1,color:#fff
+</div><h4 id="mathematical-formulation">Mathematical Formulation </h4>
+<p>The CF algorithm computes a <strong>weighted average prediction</strong> for each unknown skill:</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>                    Σᵢ  similarity(candidate, skillᵢ) × rating(skillᵢ)
+predicted_score = ─────────────────────────────────────────────────────
+                    Σᵢ  |similarity(candidate, skillᵢ)|
+</code></pre><p>Where:</p>
+<ul>
+<li><code>candidate</code> = a skill the user hasn't marked yet</li>
+<li><code>skillᵢ</code> iterates over the user's <strong>known</strong> skills</li>
+<li><code>rating(skillᵢ)</code> = <strong>+1</strong> if user has it, <strong>-1</strong> if user denied it</li>
+<li><code>similarity(A, B)</code> = precomputed cosine similarity from Stack Overflow data</li>
+</ul>
+<div class="callout" data-callout="note">
+<div class="callout-title">Note</div>
+<p>The cosine similarity for binary co-occurrence vectors reduces to:<br>
+<code>sim(A, B) = |users_who_have_both| / √(|users_who_have_A| × |users_who_have_B|)</code><br>
+This is computed over 87,000+ real developer profiles, making it statistically robust.</p>
+</div>
+<hr>
+<h3 id="24--relevance-engine-dual-path-scoring">2.4 — Relevance Engine: Dual-Path Scoring </h3>
+<p>The Relevance Engine answers: <em>"Should we ask this user about this skill?"</em></p>
+<div class="mermaid">flowchart TD
+    INPUT["calculateRelevance(user, targetSkill)"]
+    
+    GUARD{"User already has&lt;br/&gt;or denied this skill?"}
+    GUARD --&gt;|Yes| ZERO["Return 0&lt;br/&gt;(Don't ask)"]
+    GUARD --&gt;|No| LOOP["For each of user's&lt;br/&gt;existing skills:"]
+    
+    LOOP --&gt; PATH1["PATH 1: Curated SKILL_GRAPH&lt;br/&gt;(~20 skills, hand-curated)"]
+    LOOP --&gt; PATH2["PATH 2: CF Dataset Fallback&lt;br/&gt;(227 skills, data-driven)"]
+    
+    PATH1 --&gt; P1_BOTH{"Both skills&lt;br/&gt;in graph?"}
+    P1_BOTH --&gt;|No| PATH2
+    P1_BOTH --&gt;|Yes| P1_DIRECT{"Direct link?&lt;br/&gt;(A.related includes B&lt;br/&gt;or B.related includes A)"}
+    P1_DIRECT --&gt;|Yes| SCORE_10["Score = 10&lt;br/&gt;(DIRECT_LINK)"]
+    P1_DIRECT --&gt;|No| P1_SHARED{"Shared neighbors?&lt;br/&gt;(Distance-2 path)"}
+    P1_SHARED --&gt;|Yes| SCORE_5["Score = 5"]
+    P1_SHARED --&gt;|No| P1_DOMAIN{"Same domain?&lt;br/&gt;(e.g. both 'Frontend')"}
+    P1_DOMAIN --&gt;|Yes| SCORE_3["Score = 3&lt;br/&gt;(SAME_DOMAIN)"]
+    P1_DOMAIN --&gt;|No| PATH2
+    
+    PATH2 --&gt; CF_LOOKUP["getCFRelevance():&lt;br/&gt;lookup similarity map"]
+    CF_LOOKUP --&gt; CF_SIM{{"CF Similarity Value"}}
+    CF_SIM --&gt;|"&gt; 0.5"| CF_10["Score = 10"]
+    CF_SIM --&gt;|"&gt; 0.3"| CF_5["Score = 5"]
+    CF_SIM --&gt;|"&gt; 0.15"| CF_3["Score = 3"]
+    CF_SIM --&gt;|"≤ 0.15"| CF_0["Score = 0"]
+    
+    SCORE_10 --&gt; MAX["Take MAX score&lt;br/&gt;across all user skills"]
+    SCORE_5 --&gt; MAX
+    SCORE_3 --&gt; MAX
+    CF_10 --&gt; MAX
+    CF_5 --&gt; MAX
+    CF_3 --&gt; MAX
+    CF_0 --&gt; MAX
+    
+    MAX --&gt; THRESHOLD{"Score ≥ 3?&lt;br/&gt;(ASK_THRESHOLD)"}
+    THRESHOLD --&gt;|Yes| ASK["✅ Generate Question&lt;br/&gt;{targetSkill, relevance, reason}"]
+    THRESHOLD --&gt;|No| SKIP["❌ Don't ask this user"]
+
+    style SCORE_10 fill:#10b981,color:#fff
+    style CF_10 fill:#10b981,color:#fff
+    style ASK fill:#6366f1,color:#fff
+    style ZERO fill:#ef4444,color:#fff
+    style SKIP fill:#ef4444,color:#fff
+</div><div class="callout" data-callout="important">
+<div class="callout-title">Important</div>
+<p><strong>Why two paths?</strong> The curated <code>SKILL_GRAPH</code> only covers ~20 skills but has high-precision human-labeled relationships. The CF dataset covers 227 skills with statistically-derived relationships. The engine tries the curated graph first, then falls back to CF data — combining editorial precision with data-driven coverage.</p>
+</div>
+<hr>
+<h3 id="25--state-management-lifecycle">2.5 — State Management Lifecycle </h3>
+<div class="mermaid">stateDiagram-v2
+    [*] --&gt; Init: App Loads
+    
+    Init --&gt; Hydrate: Check localStorage
+    Hydrate --&gt; Ready: State loaded or defaults applied
+    
+    Ready --&gt; RecruiterSearch: UNIFIED_SEARCH dispatched
+    RecruiterSearch --&gt; SkillExtraction: Extract skills from query
+    SkillExtraction --&gt; DirectMatch: Filter users with matching skills
+    DirectMatch --&gt; VerificationGen: Generate questions for related users
+    VerificationGen --&gt; Ready: State updated, persisted to localStorage
+
+    Ready --&gt; CandidateView: Switch to Candidate View
+    CandidateView --&gt; AnswerQuestion: ANSWER_QUESTION dispatched (Yes/No)
+    AnswerQuestion --&gt; ProfileUpdate: Add skill or add to denied list
+    ProfileUpdate --&gt; CFRecalc: CF engine recalculates suggestions
+    CFRecalc --&gt; Ready: Updated suggestions rendered, state persisted
+
+    Ready --&gt; ManualSkillAdd: ADD_SKILL dispatched
+    ManualSkillAdd --&gt; ProfileUpdate
+
+    Ready --&gt; ManualSkillDeny: DENY_SKILL dispatched
+    ManualSkillDeny --&gt; ProfileUpdate
+
+    Ready --&gt; Reset: RESET_DATA dispatched
+    Reset --&gt; Init: Clear localStorage, reload defaults
+</div><h4 id="state-shape-appcontext">State Shape (AppContext) </h4>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token punctuation">{</span>
+    <span class="token literal-property property">users</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+            <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Alice"</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">role</span><span class="token operator">:</span> <span class="token string">"Frontend Dev"</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">skills</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"React"</span><span class="token punctuation">,</span> <span class="token string">"CSS"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>           <span class="token comment">// ← Confirmed skills (+1 rating)</span>
+            <span class="token literal-property property">denied_skills</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>                    <span class="token comment">// ← Denied skills (-1 rating)</span>
+            <span class="token literal-property property">pending_questions</span><span class="token operator">:</span> <span class="token punctuation">[</span>                  <span class="token comment">// ← Verification inbox</span>
+                <span class="token punctuation">{</span>
+                    <span class="token literal-property property">userId</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+                    <span class="token literal-property property">targetSkill</span><span class="token operator">:</span> <span class="token string">"JavaScript"</span><span class="token punctuation">,</span>
+                    <span class="token literal-property property">relevance</span><span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+                    <span class="token literal-property property">reason</span><span class="token operator">:</span> <span class="token string">"React"</span><span class="token punctuation">,</span>              <span class="token comment">// ← Which skill triggered the question</span>
+                    <span class="token literal-property property">originalQuery</span><span class="token operator">:</span> <span class="token string">"build a dynamic web app"</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token comment">// ... more users</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">currentUserIdx</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>                        <span class="token comment">// ← Mock auth (which user is "logged in")</span>
+    <span class="token literal-property property">recruiterSearch</span><span class="token operator">:</span> <span class="token string">"build a dynamic web app"</span><span class="token punctuation">,</span> <span class="token comment">// ← Original NLP query</span>
+    <span class="token literal-property property">searchResultCandidates</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token spread operator">...</span><span class="token punctuation">]</span><span class="token punctuation">,</span>             <span class="token comment">// ← Users who DIRECTLY match</span>
+    <span class="token literal-property property">extractedSkills</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token spread operator">...</span><span class="token punctuation">]</span><span class="token punctuation">,</span>                    <span class="token comment">// ← AI-extracted skills with relevance</span>
+    <span class="token literal-property property">extractionType</span><span class="token operator">:</span> <span class="token string">"nlp"</span><span class="token punctuation">,</span>                     <span class="token comment">// ← 'exact' | 'fuzzy' | 'nlp' | 'fallback'</span>
+    <span class="token literal-property property">verificationsGenerated</span><span class="token operator">:</span> <span class="token number">3</span>                  <span class="token comment">// ← Count of questions generated</span>
+<span class="token punctuation">}</span>
+</code></pre><hr>
+<h3 id="26--candidate-feedback-loop-profile-enrichment">2.6 — Candidate Feedback Loop (Profile Enrichment) </h3>
+<div class="mermaid">flowchart LR
+    subgraph "Recruiter Side"
+        SEARCH["Recruiter searches:&lt;br/&gt;'machine learning expert'"]
+        RESULTS["Direct Matches:&lt;br/&gt;Charlie (Python, Pandas)"]
+        PIPELINE["Verification Pipeline:&lt;br/&gt;Alice → ? TensorFlow&lt;br/&gt;Bob → ? Data Analysis"]
+    end
+
+    subgraph "Candidate Side (Alice)"
+        INBOX["Inbox: 1 new question"]
+        Q["'Because you know React...&lt;br/&gt;Do you know JavaScript?'"]
+        YES["✅ Yes → skill added"]
+        NO["❌ No → skill denied"]
+    end
+
+    subgraph "CF Autosuggest"
+        PROFILE["Alice's Profile:&lt;br/&gt;React, CSS, JavaScript"]
+        CF_ENGINE["cfEngine.getSuggestions()&lt;br/&gt;Scans 227 skills"]
+        SUGGEST["Suggestions:&lt;br/&gt;TypeScript (0.72, via JavaScript)&lt;br/&gt;Redux (0.65, via React)&lt;br/&gt;Node.js (0.58, via JavaScript)"]
+    end
+
+    SEARCH --&gt; RESULTS
+    SEARCH --&gt; PIPELINE
+    PIPELINE -.-&gt; INBOX
+    INBOX --&gt; Q
+    Q --&gt; YES
+    Q --&gt; NO
+    YES --&gt; PROFILE
+    NO -.-&gt;|"Negative signal"| CF_ENGINE
+    PROFILE --&gt; CF_ENGINE
+    CF_ENGINE --&gt; SUGGEST
+    SUGGEST --&gt;|"User accepts more"| PROFILE
+
+    style SEARCH fill:#8b5cf6,color:#fff
+    style CF_ENGINE fill:#6366f1,color:#fff
+    style YES fill:#10b981,color:#fff
+    style NO fill:#ef4444,color:#fff
+</div><div class="callout" data-callout="tip">
+<div class="callout-title">Tip</div>
+<p><strong>The Virtuous Cycle</strong>: Each recruiter search generates verification questions → candidates confirm/deny → their profiles become richer → CF suggestions become more accurate → future recruiter searches find better matches. This is a <strong>self-improving system</strong>.</p>
+</div>
+<hr>
+<h3 id="27--skill-matcher-microservice-subsystem-2">2.7 — Skill Matcher Microservice (Subsystem 2) </h3>
+<div class="mermaid">flowchart TD
+    subgraph "FastAPI Server (skill_matcher/app/)"
+        MAIN["main.py&lt;br/&gt;FastAPI App"]
+        CRUD["crud.py&lt;br/&gt;DB Operations"]
+        SERVICES["services.py&lt;br/&gt;EmbeddingService"]
+        MODELS["models.py&lt;br/&gt;SQLAlchemy Models"]
+        SCHEMAS["schemas.py&lt;br/&gt;Pydantic Validation"]
+        DB["database.py&lt;br/&gt;PostgreSQL Connection"]
+    end
+
+    subgraph "PostgreSQL + pgvector"
+        CONCEPTS["concepts&lt;br/&gt;(id, name, desc, embedding[384])"]
+        SUBSKILLS["subskills&lt;br/&gt;(id, name, desc, concept_id, embedding[384])"]
+        MICROSKILLS["microskills&lt;br/&gt;(id, name, desc, subskill_id, embedding[384])"]
+    end
+
+    subgraph "AI Model"
+        SBERT["all-MiniLM-L6-v2&lt;br/&gt;(384-dim embeddings)"]
+    end
+
+    CLIENT["API Client"] --&gt;|"POST /concepts/"| MAIN
+    CLIENT --&gt;|"POST /subskills/"| MAIN
+    CLIENT --&gt;|"POST /microskills/"| MAIN
+    CLIENT --&gt;|"POST /search/"| MAIN
+    CLIENT --&gt;|"GET /tree/"| MAIN
+    
+    MAIN --&gt; SCHEMAS
+    SCHEMAS --&gt; CRUD
+    CRUD --&gt; SERVICES
+    SERVICES --&gt; SBERT
+    CRUD --&gt; MODELS
+    MODELS --&gt; DB
+    DB --&gt; CONCEPTS
+    DB --&gt; SUBSKILLS
+    DB --&gt; MICROSKILLS
+
+    CONCEPTS --&gt;|"1:N"| SUBSKILLS
+    SUBSKILLS --&gt;|"1:N"| MICROSKILLS
+
+    style MAIN fill:#10b981,color:#fff
+    style SBERT fill:#f59e0b,color:#000
+    style CONCEPTS fill:#3b82f6,color:#fff
+    style SUBSKILLS fill:#3b82f6,color:#fff
+    style MICROSKILLS fill:#3b82f6,color:#fff
+</div><h4 id="hierarchical-skill-taxonomy">Hierarchical Skill Taxonomy </h4>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>Concept (Level 1)
+└── SubSkill (Level 2)
+    └── MicroSkill (Level 3)
+
+Example:
+Data Science
+├── Machine Learning
+│   ├── Gradient Descent
+│   ├── Backpropagation
+│   └── Overfitting
+Software Engineering
+├── Debugging
+│   ├── Stack Trace Analysis
+│   └── Rubber Ducking
+</code></pre><h4 id="vector-search-algorithm">Vector Search Algorithm </h4>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>1. User submits query: "my model keeps memorizing training data"
+2. EmbeddingService encodes query → 384-dim vector
+3. pgvector computes cosine_distance(query_vec, microskill.embedding) for all rows
+4. Results sorted by ascending distance (lower = more similar)
+5. Top-K returned with full path: "Data Science &gt; Machine Learning &gt; Overfitting"
+</code></pre><hr>
+<h2 id="3-theoretical-explanation-of-the-entire-system">3. Theoretical Explanation of the Entire System </h2>
+<h3 id="31--the-core-problem">3.1 — The Core Problem </h3>
+<p>Traditional skill-matching systems use <strong>keyword search</strong>: a recruiter types "React" and candidates with "React" appear. This fails when:</p>
+<ol>
+<li><strong>Semantic Gap</strong>: Recruiter says "build a real-time dashboard" — no candidate has a skill called "real-time dashboard"</li>
+<li><strong>Incomplete Profiles</strong>: A React developer almost certainly knows JavaScript, but may not have listed it</li>
+<li><strong>Discovery</strong>: The system can't surface candidates who <em>might</em> have a skill but haven't been asked</li>
+</ol>
+<h3 id="32--the-aim-solution-architecture">3.2 — The AIM Solution Architecture </h3>
+<p>AIM (AI-Intelligent Matching) solves all three problems through a <strong>three-engine architecture</strong>:</p>
+<h4 id="engine-1-nlp-skill-extraction-skillextractorjs--api-serverjs">Engine 1: NLP Skill Extraction (skillExtractor.js + api-server.js) </h4>
+<p><strong>Purpose</strong>: Bridge the semantic gap between human language and technical skill names.</p>
+<p><strong>How it works</strong>:</p>
+<ul>
+<li>The recruiter's natural language query is sent to <strong>Groq Cloud</strong> running the <strong>qwen3-32b</strong> large language model</li>
+<li>The LLM receives a system prompt containing all 227 valid skill names from the dataset</li>
+<li>It returns a structured JSON array of skills with confidence scores and reasoning</li>
+<li>A <strong>3-tier cascade</strong> optimizes for speed: exact match (0ms) → fuzzy match (~1ms) → NLP inference (~1-3s)</li>
+<li><strong>Validation layer</strong> ensures the LLM never hallucinates skill names — every returned skill must exist in the 227-skill dataset</li>
+</ul>
+<p><strong>Theoretical Basis</strong>: Transformer-based language models encode semantic relationships between concepts. The model understands that "build a real-time data pipeline" implies skills like Apache Kafka, Apache Spark, and Python — even though none of those words appear in the query verbatim.</p>
+<h4 id="engine-2-collaborative-filtering-cfenginejs">Engine 2: Collaborative Filtering (cfEngine.js) </h4>
+<p><strong>Purpose</strong>: Predict what <em>other</em> skills a user likely has based on their current profile.</p>
+<p><strong>How it works</strong>:</p>
+<ul>
+<li><strong>Offline phase</strong>: The <code>precompute_similarity.py</code> script processes the <strong>Stack Overflow 2023 Developer Survey</strong> (87,000+ developers). For each pair of skills, it computes cosine similarity based on co-occurrence:<pre data-role="codeBlock" data-info="" class="language-text"><code>sim(A, B) = |developers_who_have_both| / √(|devs_with_A| × |devs_with_B|)
+</code></pre></li>
+<li><strong>Runtime phase</strong>: For a user with skills {React, CSS}, the engine scans all 227 candidate skills and computes a weighted prediction score using the formula:<pre data-role="codeBlock" data-info="" class="language-text"><code>prediction(X) = Σ(sim(X, known_i) × rating_i) / Σ|sim(X, known_i)|
+</code></pre>Where <code>rating_i = +1</code> for confirmed skills and <code>-1</code> for denied skills.</li>
+</ul>
+<p><strong>Theoretical Basis</strong>: This is <strong>Item-Based k-Nearest Neighbors Collaborative Filtering</strong> — the same algorithm used by Amazon for product recommendations ("customers who bought X also bought Y"). Here, "items" are skills and "users" are developers. The insight: if 70% of developers who know React also know JavaScript, then a React developer who hasn't listed JavaScript probably still knows it.</p>
+<p><strong>Key Innovation — Negative Signals</strong>: When a user clicks "No, I don't have this skill", it's recorded as a <strong>-1 rating</strong>. This <em>actively suppresses</em> related predictions. If Alice denies knowing TypeScript, the engine reduces predictions for Angular and other TypeScript-adjacent skills. This prevents the system from repeatedly suggesting irrelevant skills.</p>
+<h4 id="engine-3-relevance-engine-relevanceenginejs">Engine 3: Relevance Engine (relevanceEngine.js) </h4>
+<p><strong>Purpose</strong>: Decide which candidates should receive verification questions for a skill they haven't listed.</p>
+<p><strong>How it works</strong>: A <strong>dual-path scoring system</strong> combines two knowledge sources:</p>
+<table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Source</th>
+<th>Coverage</th>
+<th>Precision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Path 1</strong>: Curated Graph</td>
+<td><code>skillGraph.js</code> (~20 skills)</td>
+<td>Low</td>
+<td>Very High</td>
+</tr>
+<tr>
+<td><strong>Path 2</strong>: CF Fallback</td>
+<td><code>skill_similarity.json</code> (227 skills)</td>
+<td>High</td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<p>The scoring hierarchy:</p>
+<table>
+<thead>
+<tr>
+<th>Relationship</th>
+<th>Score</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Direct link in skill graph</td>
+<td>10</td>
+<td>React → JavaScript (explicitly linked)</td>
+</tr>
+<tr>
+<td>CF similarity &gt; 0.5</td>
+<td>10</td>
+<td>Python → NumPy (co-occur in 50%+ of profiles)</td>
+</tr>
+<tr>
+<td>Shared neighbor (distance-2)</td>
+<td>5</td>
+<td>React → Angular (both link to JavaScript)</td>
+</tr>
+<tr>
+<td>CF similarity &gt; 0.3</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr>
+<td>Same domain</td>
+<td>3</td>
+<td>React → Vue.js (both "Frontend")</td>
+</tr>
+<tr>
+<td>CF similarity &gt; 0.15</td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>No relationship</td>
+<td>0</td>
+<td>React → Cooking</td>
+</tr>
+</tbody>
+</table>
+<p>If the <strong>maximum score across all of a user's skills ≥ 3</strong>, a verification question is generated.</p>
+<p><strong>Theoretical Basis</strong>: This is a <strong>hybrid knowledge graph + statistical inference</strong> system. The curated graph provides <strong>editorial precision</strong> (a human explicitly said "React is related to JavaScript"), while the CF data provides <strong>statistical coverage</strong> (the data shows React developers also tend to know Redux, even if nobody hand-coded that relationship).</p>
+<h3 id="33--state-management--persistence">3.3 — State Management &amp; Persistence </h3>
+<p>The application uses <strong>React Context + useReducer</strong> — a lightweight, Redux-like pattern:</p>
+<ul>
+<li><strong>Single Source of Truth</strong>: All state lives in one <code>AppContext</code> object</li>
+<li><strong>Immutable Updates</strong>: Every action returns a new state object (no mutations)</li>
+<li><strong>Persistence</strong>: An <code>useEffect</code> hook serializes the entire state to <code>localStorage</code> on every change</li>
+<li><strong>Hydration</strong>: On app load, state is restored from <code>localStorage</code> (or initialized from defaults)</li>
+<li><strong>7 Action Types</strong>: <code>SET_RECRUITER_SEARCH</code>, <code>UNIFIED_SEARCH</code>, <code>ANSWER_QUESTION</code>, <code>ADD_SKILL</code>, <code>DENY_SKILL</code>, <code>SWITCH_USER</code>, <code>RESET_DATA</code></li>
+</ul>
+<h3 id="34--the-skill-matcher-microservice">3.4 — The Skill Matcher Microservice </h3>
+<p>This is a <strong>separate, production-grade subsystem</strong> using a fundamentally different approach:</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>aim_profile_app</th>
+<th>skill_matcher</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Skill storage</td>
+<td>In-memory JSON</td>
+<td>PostgreSQL with pgvector</td>
+</tr>
+<tr>
+<td>Search method</td>
+<td>Co-occurrence statistics</td>
+<td>Dense vector similarity (semantic)</td>
+</tr>
+<tr>
+<td>Skill structure</td>
+<td>Flat list (227 skills)</td>
+<td>Hierarchical (Concept → SubSkill → MicroSkill)</td>
+</tr>
+<tr>
+<td>AI model</td>
+<td>Groq cloud LLM</td>
+<td>Local sentence-transformers</td>
+</tr>
+<tr>
+<td>Use case</td>
+<td>Recruiter ↔ candidate matching</td>
+<td>Skill taxonomy &amp; semantic search</td>
+</tr>
+</tbody>
+</table>
+<p><strong>How it works</strong>:</p>
+<ol>
+<li>When a new skill is created via the API, the <code>EmbeddingService</code> encodes its name + description into a <strong>384-dimensional vector</strong> using <code>all-MiniLM-L6-v2</code></li>
+<li>This vector is stored alongside the skill in PostgreSQL using the <strong>pgvector</strong> extension</li>
+<li>Search queries are also encoded into vectors</li>
+<li><strong>pgvector</strong> computes cosine distance between the query vector and all stored skill vectors</li>
+<li>Results are returned sorted by similarity, with their full hierarchical path</li>
+</ol>
+<p><strong>Theoretical Basis</strong>: Unlike the co-occurrence-based CF approach, this system uses <strong>dense semantic embeddings</strong> — continuous vector representations of text meaning. Two pieces of text with similar <em>meaning</em> (even if they share no words) will have vectors close together in 384-dimensional space. This enables queries like "my model keeps memorizing training data" to match the micro-skill "Overfitting" — because the transformer model understands the semantic relationship.</p>
+<hr>
+<h2 id="4-file-architecture-map">4. File Architecture Map </h2>
+<h3 id="aim_profile_app--primary-application"><code>aim_profile_app/</code> — Primary Application </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>aim_profile_app/
+├── .env                          # GROQ_API_KEY, API_PORT
+├── package.json                  # Vite + React + Express + Groq SDK
+├── vite.config.js                # Dev server config
+├── index.html                    # SPA entry point
+│
+├── backend/
+│   ├── api-server.js             # EXPRESS SERVER — Groq LLM proxy + skill extraction
+│   ├── server.py                 # LEGACY Flask server (sentence-transformers, SQLite)
+│   ├── db_setup.py               # SQLite schema + seed data for legacy server
+│   └── candidates.db             # SQLite database (legacy)
+│
+├── scripts/
+│   └── precompute_similarity.py  # OFFLINE — builds skill_similarity.json from SO Survey
+│
+└── src/
+    ├── main.jsx                  # React entry point (renders &lt;App /&gt;)
+    ├── App.jsx                   # ROOT COMPONENT — Layout, view toggle, header
+    ├── App.css                   # App-specific styles
+    ├── index.css                 # Global design system (glassmorphism theme)
+    │
+    ├── context/
+    │   └── AppContext.jsx        # STATE MANAGEMENT — useReducer + localStorage
+    │
+    ├── logic/
+    │   ├── skillExtractor.js     # NLP EXTRACTION — Groq API client + offline fallback
+    │   ├── cfEngine.js           # COLLABORATIVE FILTERING — item-based kNN predictions
+    │   └── relevanceEngine.js    # RELEVANCE SCORING — dual-path (graph + CF) scoring
+    │
+    ├── data/
+    │   ├── skillGraph.js         # CURATED KNOWLEDGE GRAPH — ~20 skills, manual relationships
+    │   └── skill_similarity.json # PRECOMPUTED CF DATA — 227 skills × 15 neighbors each
+    │
+    └── components/
+        ├── SkillSearch.jsx       # RECRUITER UI — 3-phase search (input → extraction → results)
+        ├── RecruiterDashboard.jsx # RECRUITER UI — verification pipeline monitor
+        ├── UserDashboard.jsx     # CANDIDATE UI — profile, inbox, answer questions
+        └── SkillAutosuggest.jsx  # CANDIDATE UI — CF-powered skill suggestions + manual search
+</code></pre><h3 id="skill_matcher--microservice"><code>skill_matcher/</code> — Microservice </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>skill_matcher/
+├── Dockerfile                    # Container definition
+├── docker-compose.yml            # PostgreSQL + pgvector + app orchestration
+├── requirements.txt              # FastAPI, SQLAlchemy, pgvector, sentence-transformers
+├── seed.py                       # Populates DB with sample skill taxonomy
+├── demo.py                       # CLI demo script
+│
+└── app/
+    ├── main.py                   # FASTAPI APP — routes for CRUD + search
+    ├── database.py               # SQLAlchemy engine + session factory
+    ├── models.py                 # ORM MODELS — Concept, SubSkill, MicroSkill (with Vector columns)
+    ├── schemas.py                # PYDANTIC SCHEMAS — request/response validation
+    ├── crud.py                   # DB OPERATIONS — create, read, search (cosine distance)
+    └── services.py               # EMBEDDING SERVICE — sentence-transformers singleton
+</code></pre><h3 id="archive--raw-data"><code>archive/</code> — Raw Data </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>archive/
+├── survey_results_public.csv     # Stack Overflow 2023 Survey (152MB, 87K+ responses)
+├── survey_results_schema.csv     # Column definitions
+├── README_2023.txt               # Survey documentation
+└── so_survey_2023.pdf            # Official survey report
+</code></pre><hr>
+<h2 id="5-end-to-end-walkthrough-a-complete-interaction">5. End-to-End Walkthrough: A Complete Interaction </h2>
+<h3 id="scenario-recruiter-searches-for-someone-who-can-build-a-real-time-data-pipeline">Scenario: Recruiter searches for "someone who can build a real-time data pipeline" </h3>
+<p><strong>Step 1 — NLP Extraction</strong></p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>Input:  "someone who can build a real-time data pipeline"
+Output: [
+    {name: "Apache Kafka", relevance: 0.92, reason: "real-time streaming platform"},
+    {name: "Apache Spark", relevance: 0.88, reason: "distributed data processing"},
+    {name: "Python",       relevance: 0.75, reason: "primary language for data engineering"},
+    {name: "SQL",          relevance: 0.60, reason: "data querying and transformation"},
+    {name: "Docker",       relevance: 0.45, reason: "containerized deployment"}
+]
+</code></pre><p><strong>Step 2 — Recruiter selects skills</strong> (auto-selected: Kafka, Spark, Python, SQL; deselected: Docker)</p>
+<p><strong>Step 3 — UNIFIED_SEARCH dispatched</strong> → For each selected skill:</p>
+<ul>
+<li><strong>Direct Matches</strong>: Charlie has Python and Pandas → matched for "Python"</li>
+<li><strong>Verification Questions</strong> (Relevance Engine):
+<ul>
+<li>Bob knows Node.js and Express → Relevance Engine checks CF data → Node.js ↔ SQL similarity &gt; 0.3 → Score = 5 → ✅ Ask Bob about SQL</li>
+<li>Alice knows React and CSS → No connection to Kafka/Spark/Python → Score = 0 → ❌ Don't ask</li>
+</ul>
+</li>
+</ul>
+<p><strong>Step 4 — Candidate View (Bob)</strong>: Bob sees:</p>
+<blockquote>
+<p>"🔍 A recruiter searched for: <em>someone who can build a real-time data pipeline</em>"<br>
+Because you know <strong>Express</strong>... Do you also have experience with <strong>SQL</strong>?</p>
+</blockquote>
+<p>Bob clicks "Yes" → SQL added to his profile → CF engine now predicts PostgreSQL, MySQL for Bob</p>
+<p><strong>Step 5 — Future searches</strong> for SQL-related skills will now directly match Bob.</p>
+<hr>
+<h2 id="6-key-design-decisions">6. Key Design Decisions </h2>
+<table>
+<thead>
+<tr>
+<th>Decision</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>3-tier extraction cascade</strong></td>
+<td>Avoid ~$0.001/query LLM costs and 1-3s latency for simple queries like "React"</td>
+</tr>
+<tr>
+<td><strong>Pre-computed similarity</strong></td>
+<td>227×227 cosine matrix computed once offline; runtime is O(n) lookup, not O(n²)</td>
+</tr>
+<tr>
+<td><strong>Dual-path relevance</strong></td>
+<td>High-precision manual graph for common skills + high-coverage statistical data for the long tail</td>
+</tr>
+<tr>
+<td><strong>Client-side CF</strong></td>
+<td>No backend required for autosuggest — runs entirely in-browser from a 192KB JSON file</td>
+</tr>
+<tr>
+<td><strong>localStorage persistence</strong></td>
+<td>Zero-infrastructure demo — no database required for the primary app's state</td>
+</tr>
+<tr>
+<td><strong>Groq + qwen3-32b</strong></td>
+<td>Free-tier API with fast inference (~1s); qwen3-32b provides strong structured JSON output</td>
+</tr>
+<tr>
+<td><strong>Separate skill_matcher</strong></td>
+<td>Production architecture pattern — demonstrates pgvector + embeddings for future scale</td>
+</tr>
+</tbody>
+</table>
+
+      </div>
+      
+      
+    
+    
+    <script type="module">
+// TODO: If ZenUML gets integrated into mermaid in the future,
+//      we can remove the following lines.
+
+
+var MERMAID_CONFIG = ({"startOnLoad":false});
+if (typeof MERMAID_CONFIG !== 'undefined') {
+  MERMAID_CONFIG.startOnLoad = false
+  MERMAID_CONFIG.cloneCssStyles = false
+  MERMAID_CONFIG.theme = "default"
+}
+
+mermaid.initialize(MERMAID_CONFIG || {})
+if (typeof(window['Reveal']) !== 'undefined') {
+  function mermaidRevealHelper(event) {
+    var currentSlide = event.currentSlide
+    var diagrams = currentSlide.querySelectorAll('div.mermaid')
+    for (var i = 0; i < diagrams.length; i++) {
+      var diagram = diagrams[i]
+      if (!diagram.hasAttribute('data-processed')) {
+        mermaid.init(null, diagram, ()=> {
+          Reveal.slide(event.indexh, event.indexv)
+        })
+      }
+    }
+  }
+  Reveal.addEventListener('slidetransitionend', mermaidRevealHelper)
+  Reveal.addEventListener('ready', mermaidRevealHelper)
+  await mermaid.run({
+    nodes: document.querySelectorAll('div.mermaid')
+  })
+} else {
+  await mermaid.run({
+    nodes: document.querySelectorAll('div.mermaid')
+  })
+}
+</script>
+    
+    
+    
+  
+    </body></html>
